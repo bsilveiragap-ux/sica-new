@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Digital para Clínicas Dentárias | Sica Creative</title>
+    <meta name="description" content="Atraia pacientes qualificados para a sua clínica dentária com uma estratégia de marketing digital orientada a resultados. Google Ads, SEO e conversão.">
+    <meta name="keywords" content="marketing digital para clínicas dentárias, marketing para dentistas, publicidade clínica dentária, atrair pacientes dentista, dental marketing">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="clinicas-dentarias.css">
+</head>
+<body>
+
+    <div class="scroll-progress" aria-hidden="true">
+        <span class="scroll-progress-bar" id="scrollProgressBar"></span>
+    </div>
+
+    <div class="promo-bar">
+        <div class="container promo-bar-inner">
+            <div class="promo-bar-wrapper">
+                <!-- LEFT SIDE: Icons -->
+                <div class="promo-bar-icons">
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/sicacreative" target="_blank" rel="noopener noreferrer" class="promo-link promo-link--instagram" title="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="rgba(255, 255, 255, 0.85)"/>
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/company/sicacreative" target="_blank" rel="noopener noreferrer" class="promo-link promo-link--linkedin" title="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="2" y="2" width="20" height="20" rx="2" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5"/>
+                            <path d="M5.5 9v8.5M5.5 5.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.2" stroke-linecap="round"/>
+                            <path d="M9.5 9v8.5c0 0.5 0.5 1 1 1h2v-5c0-1 0.5-2 1.5-2 1 0 1.5 0.5 1.5 2v5h2v-5.5c0-2-0.5-3.5-2-3.5-1 0-1.5 0.5-2 1v-1" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+
+                    <!-- English Flag -->
+                    <a href="index-en.html" class="promo-link promo-link--flag" title="Switch to English">
+                        <svg width="18" height="18" viewBox="0 0 60 30" fill="none" aria-hidden="true">
+                            <rect width="60" height="30" fill="#012169"/>
+                            <path d="M0 0L60 30M60 0L0 30" stroke="white" stroke-width="6"/>
+                            <path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4" stroke-dasharray="0.1,100"/>
+                            <path d="M30 0v30M0 15h60" stroke="white" stroke-width="10"/>
+                            <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- RIGHT SIDE: Email -->
+                <a href="mailto:info@sicacreative.com" class="promo-email">info@sicacreative.com</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="navbar-logo">Sica Creative</a>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="navbar-menu" id="navMenu">
+                <li><a href="index.html#services">Serviços</a></li>
+                <li><a href="resultados.html">Resultados</a></li>
+                <li><a href="ferramentas.html">Ferramentas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li class="has-dropdown">
+                    <button class="dropdown-trigger">Especialidades <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    <ul class="nav-dropdown">
+                        <li><a href="marketing-digital-clinicas-dentarias.html" aria-current="page">Clínicas Dentárias</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#final-cta">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════════════════ -->
+    <header class="cd-hero">
+        <div class="container cd-hero-inner">
+            <span class="section-label">Dentistas &amp; Clínicas Dentárias</span>
+            <h1>Marketing Digital para<br>Clínicas Dentárias</h1>
+            <p class="cd-hero-sub">Atraia pacientes qualificados de forma consistente, reduza o custo de aquisição e construa uma agenda previsível — com uma estratégia orientada a resultados, não a impressões.</p>
+            <div class="cd-hero-actions">
+                <a href="/pt/quiz/" class="btn btn-primary">Começar Diagnóstico Gratuito</a>
+                <a href="#cd-process" class="btn btn-secondary">Ver como trabalhamos</a>
+            </div>
+            <div class="cd-trust-row">
+                <div class="cd-trust-item">
+                    <strong>+50</strong>
+                    <span>clínicas e negocios ajudados</span>
+                </div>
+                <div class="cd-trust-divider" aria-hidden="true"></div>
+                <div class="cd-trust-item">
+                    <strong>4,2x</strong>
+                    <span>ROI médio por campanha</span>
+                </div>
+                <div class="cd-trust-divider" aria-hidden="true"></div>
+                <div class="cd-trust-item">
+                    <strong>30 dias</strong>
+                    <span>para primeiros resultados mensuráveis</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ═══════════════════════════════════════════════════════
+             PROBLEMA
+        ═══════════════════════════════════════════════════════ -->
+        <section class="section cd-problem-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">O Problema</span>
+                    <h2>Porque é que muitas clínicas dentárias têm dificuldade em crescer?</h2>
+                    <p>Ter uma boa clínica não é suficiente. Sem visibilidade e um sistema de aquisição estruturado, o crescimento fica dependente do acaso.</p>
+                </div>
+                <div class="cd-problems-grid">
+                    <div class="cd-problem-item">
+                        <div class="cd-problem-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="5.5" stroke="#34224D" stroke-width="1.6"/><path d="M13.5 13.5L17 17" stroke="#34224D" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </div>
+                        <div>
+                            <strong>Invisibilidade no Google</strong>
+                            <p>A maioria dos pacientes pesquisa "dentista perto de mim" antes de marcar. Se a sua clínica não aparece nas primeiras posições, essa procura vai para a concorrência.</p>
+                        </div>
+                    </div>
+                    <div class="cd-problem-item">
+                        <div class="cd-problem-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 5h8a2 2 0 012 2v3.5a2 2 0 01-2 2H8l-3 2v-2H4a2 2 0 01-2-2V7a2 2 0 012-2z" stroke="#34224D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <strong>Dependência de recomendações</strong>
+                            <p>O passa-a-palavra funciona, mas não é escalável nem previsível. Quando os referidos diminuem, a agenda esvazia — e não há sistema para compensar.</p>
+                        </div>
+                    </div>
+                    <div class="cd-problem-item">
+                        <div class="cd-problem-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2" stroke="#34224D" stroke-width="1.6"/><path d="M7 4V3m6 1V3M3 9h14" stroke="#34224D" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </div>
+                        <div>
+                            <strong>Poucas marcações online</strong>
+                            <p>Ter presença nas redes sociais não é o mesmo que ter um funil de aquisição. Seguidores não pagam consultas — pacientes sim.</p>
+                        </div>
+                    </div>
+                    <div class="cd-problem-item">
+                        <div class="cd-problem-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 14l4-4 3 3 4-5 2.5-2.5" stroke="#34224D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 5.5v3.5h-3.5" stroke="#34224D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <strong>Campanhas sem retorno claro</strong>
+                            <p>Investimento em publicidade sem saber o custo por paciente adquirido, nem quais as campanhas que realmente funcionam.</p>
+                        </div>
+                    </div>
+                    <div class="cd-problem-item">
+                        <div class="cd-problem-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v6l3.5 3.5" stroke="#34224D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="10" r="7" stroke="#34224D" stroke-width="1.6"/></svg>
+                        </div>
+                        <div>
+                            <strong>Concorrência crescente</strong>
+                            <p>Novas clínicas com boa presença digital captam pacientes que antes escolhiam por localização. A visibilidade tornou-se uma vantagem competitiva real.</p>
+                        </div>
+                    </div>
+                    <div class="cd-problem-item">
+                        <div class="cd-problem-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3l2 5.5H18l-4.5 3.5 1.5 5L10 14l-5 3 1.5-5L2 8.5h6L10 3z" stroke="#34224D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <strong>Falta de reputação digital</strong>
+                            <p>Avaliações escassas, website desatualizado e ausência de prova social afastam pacientes ainda antes de contactarem a clínica.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             SOLUÇÃO
+        ═══════════════════════════════════════════════════════ -->
+        <section class="section cd-solution-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">A Solução</span>
+                    <h2>Como o marketing digital pode transformar a sua clínica dentária</h2>
+                    <p>Não se trata de estar online. Trata-se de construir um sistema de aquisição que gera pacientes de forma consistente e mensurável.</p>
+                </div>
+                <div class="cd-solution-grid">
+                    <div class="cd-solution-item">
+                        <span class="cd-solution-num">01</span>
+                        <h3>Geração de leads previsível</h3>
+                        <p>Um fluxo constante de pedidos de marcação, independente do mês ou da época — sem depender de recomendações ou sorte.</p>
+                    </div>
+                    <div class="cd-solution-item">
+                        <span class="cd-solution-num">02</span>
+                        <h3>Pacientes com intenção real</h3>
+                        <p>Captamos pessoas que já estão à procura dos seus serviços, reduzindo o custo por aquisição e aumentando a taxa de conversão.</p>
+                    </div>
+                    <div class="cd-solution-item">
+                        <span class="cd-solution-num">03</span>
+                        <h3>Performance mensurável</h3>
+                        <p>Sabe exatamente quanto custa cada paciente adquirido, qual o retorno por canal e onde está a perder oportunidades.</p>
+                    </div>
+                    <div class="cd-solution-item">
+                        <span class="cd-solution-num">04</span>
+                        <h3>Crescimento escalável</h3>
+                        <p>Quando o sistema funciona, pode aumentar o investimento com confiança — e ver o crescimento a acompanhar proporcionalmente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             SERVIÇOS (COMO SISTEMA)
+        ═══════════════════════════════════════════════════════ -->
+        <section class="section cd-system-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Sistema de Aquisição</span>
+                    <h2>Os canais que ativamos para a sua clínica</h2>
+                    <p>Cada canal tem um papel específico no funil. Não trabalhamos por canais isolados — ativamos o sistema certo para o seu objetivo.</p>
+                </div>
+                <div class="cd-system-grid">
+                    <div class="cd-system-card">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 14l4-4 3 3 4-5 2.5-2.5" stroke="#34224D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 5.5v3.5h-3.5" stroke="#34224D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3>Google Ads</h3>
+                        <p>Captamos pacientes com intenção de marcar consulta — no momento exato em que pesquisam pelo serviço. Resultados a partir dos primeiros dias.</p>
+                        <span class="cd-system-tag">Alta intenção</span>
+                    </div>
+                    <div class="cd-system-card">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="5.5" stroke="#34224D" stroke-width="1.6"/><path d="M13.5 13.5L17 17" stroke="#34224D" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </div>
+                        <h3>SEO Local e Orgânico</h3>
+                        <p>Posicionamos a sua clínica nas pesquisas do Google sem custo por clique. Visibilidade sustentável que cresce ao longo do tempo e reduz dependência de publicidade paga.</p>
+                        <span class="cd-system-tag">Longo prazo</span>
+                    </div>
+                    <div class="cd-system-card">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#34224D" stroke-width="1.6"/><path d="M2 8h16" stroke="#34224D" stroke-width="1.6"/><circle cx="5" cy="6" r="0.9" fill="#34224D"/><circle cx="8" cy="6" r="0.9" fill="#34224D"/></svg>
+                        </div>
+                        <h3>Websites Focados em Conversão</h3>
+                        <p>Um website de clínica dentária não é uma brochura digital — é o ponto de decisão do paciente. Criamos páginas que convertem visitas em marcações.</p>
+                        <span class="cd-system-tag">Conversão</span>
+                    </div>
+                    <div class="cd-system-card">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 5h8a2 2 0 012 2v3.5a2 2 0 01-2 2H8l-3 2v-2H4a2 2 0 01-2-2V7a2 2 0 012-2z" stroke="#34224D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3>Social Media com Estratégia</h3>
+                        <p>Construímos autoridade e presença digital que reforça a decisão de marcar. Conteúdo que posiciona, não apenas que entretém.</p>
+                        <span class="cd-system-tag">Autoridade</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             BENEFÍCIOS
+        ═══════════════════════════════════════════════════════ -->
+        <section class="section cd-benefits-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Resultados</span>
+                    <h2>O que pode esperar quando o sistema funciona</h2>
+                </div>
+                <div class="cd-benefits-grid">
+                    <div class="cd-benefit">
+                        <strong>Mais pacientes qualificados</strong>
+                        <p>Não apenas mais contactos — pacientes com intenção real de marcar e perfil adequado aos seus serviços.</p>
+                    </div>
+                    <div class="cd-benefit">
+                        <strong>Agenda mais previsível</strong>
+                        <p>Semanas consistentes, sem os picos e quedas que tornam a gestão da clínica difícil e stressante.</p>
+                    </div>
+                    <div class="cd-benefit">
+                        <strong>Custo de aquisição controlado</strong>
+                        <p>Sabe quanto custa cada novo paciente e pode tomar decisões de investimento com base em dados reais.</p>
+                    </div>
+                    <div class="cd-benefit">
+                        <strong>Crescimento sustentável</strong>
+                        <p>Um sistema que melhora ao longo do tempo — quanto mais dados, melhor a performance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             MID-PAGE CTA
+        ═══════════════════════════════════════════════════════ -->
+        <section class="cd-midcta">
+            <div class="container cd-midcta-inner">
+                <div>
+                    <h2>Descubra o que está a travar o crescimento da sua clínica.</h2>
+                    <p>Uma análise rápida à sua presença atual pode revelar onde está a perder marcações.</p>
+                </div>
+                <a href="/pt/quiz/" class="btn btn-primary">Começar Diagnóstico Gratuito</a>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             PROCESSO
+        ═══════════════════════════════════════════════════════ -->
+        <section id="cd-process" class="section cd-process-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Como trabalhamos</span>
+                    <h2>Um processo claro, sem promessas vagas</h2>
+                    <p>Cada projeto começa com diagnóstico, não com propostas genéricas.</p>
+                </div>
+                <div class="cd-steps">
+                    <div class="cd-step">
+                        <span class="cd-step-num">01</span>
+                        <h3>Análise</h3>
+                        <p>Auditamos a presença atual da sua clínica — website, campanhas ativas, SEO local, concorrência e funil de marcação. Identificamos onde está a perder pacientes e margem.</p>
+                    </div>
+                    <div class="cd-step-arrow" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#c6db5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="cd-step">
+                        <span class="cd-step-num">02</span>
+                        <h3>Estratégia</h3>
+                        <p>Desenvolvemos um plano de aquisição com canais prioritários, objetivos mensuráveis e cronograma de execução. Sem ações avulsas — tudo tem um propósito claro.</p>
+                    </div>
+                    <div class="cd-step-arrow" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#c6db5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="cd-step">
+                        <span class="cd-step-num">03</span>
+                        <h3>Crescimento</h3>
+                        <p>Executamos, medimos e otimizamos continuamente. Relatórios semanais, decisões baseadas em dados e ajustes constantes para manter o custo por paciente sob controlo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             CASO DE ESTUDO
+        ═══════════════════════════════════════════════════════ -->
+        <section class="section cd-case-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Caso de Estudo</span>
+                    <h2>Da agenda irregular ao crescimento previsível</h2>
+                </div>
+                <div class="cd-case-card">
+                    <div class="cd-case-context">
+                        <span class="cd-case-label">Contexto</span>
+                        <p>Clínica dentária com três cadeiras, localizada numa área urbana competitiva. A agenda era preenchida principalmente por recomendações, com grandes variações entre semanas. Nenhuma campanha digital activa. Website desatualizado, sem formulário de marcação online.</p>
+                    </div>
+                    <div class="cd-case-divider" aria-hidden="true"></div>
+                    <div class="cd-case-results">
+                        <span class="cd-case-label">Após 90 dias com a Sica Creative</span>
+                        <div class="cd-case-metrics">
+                            <div class="cd-case-metric">
+                                <strong>+65%</strong>
+                                <span>pedidos de marcação mensais</span>
+                            </div>
+                            <div class="cd-case-metric">
+                                <strong>-31%</strong>
+                                <span>custo por paciente adquirido</span>
+                            </div>
+                            <div class="cd-case-metric">
+                                <strong>4,1x</strong>
+                                <span>retorno sobre investimento em anúncios</span>
+                            </div>
+                        </div>
+                        <p class="cd-case-note">Implementação: Google Ads focado em intenção local, redesign da landing page e otimização do perfil Google Business. Relatórios semanais com ajuste de campanha.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             TESTEMUNHO
+        ═══════════════════════════════════════════════════════ -->
+        <section class="section cd-testimonial-section">
+            <div class="container">
+                <div class="cd-testimonial-card">
+                    <blockquote>
+                        "As campanhas trouxeram exatamente o tipo de pacientes que eu queria. Deixei de depender de recomendações e passei a ter marcações consistentes todas as semanas. Em três meses, a agenda passou de irregular para previsível."
+                    </blockquote>
+                    <cite>
+                        <strong>Dr. Carlos M.</strong>
+                        <span>Clínica de Medicina Dentária</span>
+                    </cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             PARA QUEM É
+        ═══════════════════════════════════════════════════════ -->
+        <section class="section cd-forwhom-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Para quem é</span>
+                    <h2>Trabalhamos com clínicas prontas para crescer</h2>
+                </div>
+                <div class="cd-forwhom-grid">
+                    <div class="cd-forwhom-yes">
+                        <h3>Indicado para:</h3>
+                        <ul>
+                            <li>Clínicas que já investem em marketing mas sem resultados previsíveis</li>
+                            <li>Dentistas que querem reduzir dependência de recomendações</li>
+                            <li>Clínicas em crescimento que precisam de mais marcações qualificadas</li>
+                            <li>Gestores de clínica que querem dados claros sobre o retorno do investimento</li>
+                        </ul>
+                    </div>
+                    <div class="cd-forwhom-no">
+                        <h3>Não é indicado para:</h3>
+                        <ul>
+                            <li>Clínicas que procuram apenas presença online sem compromisso com performance</li>
+                            <li>Quem espera resultados imediatos sem investimento consistente</li>
+                            <li>Quem não está disponível para partilhar dados de negócio e participar no processo</li>
+                        </ul>
+                        <p class="cd-forwhom-disclaimer">Se procura apenas visibilidade, não somos a escolha certa. Trabalhamos com clínicas que querem crescimento mensurável.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════
+             FAQ
+        ═══════════════════════════════════════════════════════ -->
+        <section class="section section-faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">FAQ</span>
+                    <h2>Perguntas frequentes sobre marketing para dentistas</h2>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">Quanto custa marketing digital para uma clínica dentária?</button>
+                        <div class="accordion-content">
+                            <p>O investimento depende dos canais activados, da área geográfica e dos objetivos de crescimento. Tipicamente, uma estratégia combinada de Google Ads e SEO para clínicas dentárias começa a partir de 600–800€/mês de gestão, mais o orçamento de anúncios. O custo por paciente adquirido é monitorizado e optimizado ao longo do tempo.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">O Google Ads funciona para dentistas?</button>
+                        <div class="accordion-content">
+                            <p>Sim — é um dos canais com maior retorno para clínicas dentárias porque captura pacientes com intenção de marcar consulta. Pesquisas como "dentista urgente", "implantes dentários [cidade]" ou "clínica dentária perto de mim" têm alta intenção comercial. Com a estrutura certa, é possível controlar o custo por marcação e escalar progressivamente.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Quanto tempo demora a ver resultados?</button>
+                        <div class="accordion-content">
+                            <p>Com campanhas pagas (Google Ads), os primeiros resultados aparecem em dias. Para SEO, o impacto significativo surge entre 3 a 6 meses, com crescimento consistente a partir daí. A combinação dos dois canais garante resultados imediatos e crescimento sustentável a longo prazo.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">O SEO é importante para clínicas dentárias?</button>
+                        <div class="accordion-content">
+                            <p>Extremamente importante. A maioria dos pacientes pesquisa online antes de marcar — e as clínicas que aparecem nas primeiras posições têm uma vantagem competitiva real. O SEO local (Google Business Profile + conteúdo geolocalizado) é especialmente eficaz para dentistas porque captura procura com alta intenção na área de influência da clínica.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Preciso de ter um website para trabalhar convosco?</button>
+                        <div class="accordion-content">
+                            <p>Não é obrigatório, mas é altamente recomendado para maximizar resultados. Se a sua clínica não tem website ou o website actual não está optimizado para conversão, podemos incluir esse trabalho na estratégia. Um website focado em marcações é um dos maiores alavancadores de performance nas campanhas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FINAL CTA
+    ═══════════════════════════════════════════════════════ -->
+    <footer id="final-cta" class="footer-cta">
+        <div class="container footer-cta-inner">
+            <div>
+                <span class="section-label">Próximo passo</span>
+                <h2>Se procura previsibilidade no crescimento da sua clínica, este é o próximo passo.</h2>
+            </div>
+            <a href="/pt/quiz/" class="btn btn-primary">Começar diagnóstico gratuito</a>
+        </div>
+    </footer>
+
+    <footer class="site-footer">
+        <div class="container site-footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">Sica Creative</div>
+                <p>Estratégia de marketing digital orientada a resultados para clínicas e negócios em crescimento.</p>
+            </div>
+            <div class="footer-links-grid">
+                <div>
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="index.html#services">Google Ads</a></li>
+                        <li><a href="index.html#services">SEO</a></li>
+                        <li><a href="index.html#services">CRO</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Empresa</h3>
+                    <ul>
+                        <li><a href="resultados.html">Resultados</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="mailto:info@sicacreative.com">info@sicacreative.com</a></li>
+                        <li><a href="index.html#final-cta">Agendar auditoria</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 Sica Creative. Todos os direitos reservados.</p>
+            <div class="footer-policy-links">
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Editor | Sica Creative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dashboard-bg: #f5f3fa;
+            --dashboard-surface: rgba(255, 255, 255, 0.92);
+            --dashboard-panel: #ffffff;
+            --dashboard-border: rgba(111, 90, 163, 0.18);
+            --dashboard-shadow: 0 26px 80px rgba(52, 34, 77, 0.14);
+            --dashboard-text: #1f1b2d;
+            --dashboard-muted: #66617b;
+            --dashboard-primary: #34224D;
+            --dashboard-secondary: #6F5AA3;
+            --dashboard-accent: #c6db5b;
+            --dashboard-radius: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            font-family: 'Inter', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(198, 219, 91, 0.16), transparent 26%),
+                radial-gradient(circle at top right, rgba(111, 90, 163, 0.16), transparent 24%),
+                var(--dashboard-bg);
+            color: var(--dashboard-text);
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        body.is-locked {
+            overflow: hidden;
+        }
+
+        .ve-shell {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-height: calc(100vh - 40px);
+        }
+
+        .ve-navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            border: 1px solid var(--dashboard-border);
+            border-radius: var(--dashboard-radius);
+            background: var(--dashboard-surface);
+            box-shadow: var(--dashboard-shadow);
+            padding: 14px;
+            backdrop-filter: blur(16px);
+            flex-wrap: wrap;
+        }
+
+        .ve-brand {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--dashboard-primary);
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+        }
+
+        .ve-page-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 8px;
+            width: 100%;
+        }
+
+        .ve-page-button {
+            border: 1px solid transparent;
+            border-radius: 10px;
+            padding: 8px 12px;
+            background: #ffffff;
+            color: var(--dashboard-primary);
+            font: inherit;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.18s ease, border-color 0.18s ease;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .ve-page-button:hover,
+        .ve-page-button.is-active {
+            transform: translateY(-1px);
+            border-color: rgba(111, 90, 163, 0.3);
+        }
+
+        .ve-main {
+            display: grid;
+            grid-template-columns: 65% 35%;
+            gap: 16px;
+            min-height: 0;
+            flex: 1;
+        }
+
+        .ve-preview,
+        .ve-editor-panel {
+            border: 1px solid var(--dashboard-border);
+            border-radius: var(--dashboard-radius);
+            background: var(--dashboard-panel);
+            box-shadow: var(--dashboard-shadow);
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        .ve-preview-header,
+        .ve-editor-header {
+            padding: 16px 18px;
+            border-bottom: 1px solid #eee8f6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .ve-preview-header h2,
+        .ve-editor-header h2 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--dashboard-primary);
+        }
+
+        .ve-preview-status {
+            color: var(--dashboard-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .ve-preview-body {
+            height: calc(100% - 58px);
+            min-height: 580px;
+            background: linear-gradient(135deg, #f7f4fb 0%, #fefeff 100%);
+            padding: 14px;
+        }
+
+        .ve-iframe {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #e7e2f0;
+            border-radius: 16px;
+            background: #ffffff;
+        }
+
+        .ve-editor-body {
+            padding: 18px;
+            color: var(--dashboard-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .ve-lock {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(19, 14, 29, 0.66);
+            backdrop-filter: blur(9px);
+        }
+
+        .ve-lock[hidden] {
+            display: none;
+        }
+
+        .ve-lock-card {
+            width: min(480px, 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            background: #ffffff;
+            box-shadow: 0 34px 120px rgba(17, 12, 29, 0.35);
+            padding: 22px;
+        }
+
+        .ve-lock-card h2 {
+            margin: 0 0 10px;
+            color: var(--dashboard-primary);
+        }
+
+        .ve-lock-card p {
+            margin: 0 0 12px;
+            color: var(--dashboard-muted);
+        }
+
+        .ve-lock-card input {
+            width: 100%;
+            border: 1px solid #dcd3ec;
+            border-radius: 12px;
+            padding: 11px 12px;
+            font: inherit;
+            margin-bottom: 10px;
+        }
+
+        .ve-lock-error {
+            min-height: 1.1em;
+            color: #9b2d3f;
+            font-size: 0.82rem;
+            margin-bottom: 10px;
+        }
+
+        .ve-button {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 16px;
+            background: var(--dashboard-accent);
+            color: #1d1829;
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1080px) {
+            .ve-main {
+                grid-template-columns: 1fr;
+            }
+
+            .ve-preview-body {
+                min-height: 420px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px;
+            }
+
+            .ve-shell {
+                gap: 10px;
+            }
+
+            .ve-navbar {
+                padding: 10px;
+                gap: 8px;
+            }
+
+            .ve-brand {
+                font-size: 0.85rem;
+                flex-basis: 100%;
+            }
+
+            .ve-page-buttons {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+
+            .ve-page-button {
+                font-size: 0.75rem;
+                padding: 7px 10px;
+                border-radius: 8px;
+            }
+
+            .ve-preview-body {
+                min-height: 300px;
+                padding: 10px;
+            }
+
+            .ve-editor-body {
+                padding: 12px;
+                font-size: 0.88rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ve-shell">
+        <nav class="ve-navbar">
+            <div class="ve-brand">Sica Visual Editor</div>
+            <div class="ve-page-buttons" id="pageButtons"></div>
+        </nav>
+
+        <main class="ve-main">
+            <section class="ve-preview">
+                <header class="ve-preview-header">
+                    <h2 id="previewTitle">Preview</h2>
+                    <span class="ve-preview-status" id="previewStatus">A carregar</span>
+                </header>
+                <div class="ve-preview-body">
+                    <iframe id="editorFrame" class="ve-iframe" title="Visual Editor Frame"></iframe>
+                </div>
+            </section>
+
+            <aside class="ve-editor-panel">
+                <header class="ve-editor-header">
+                    <h2>Editor</h2>
+                    <button class="ve-button" id="exportChangesButton" type="button">Exportar alterações</button>
+                </header>
+                <div id="exportFeedback" style="display:none;padding:12px 18px;border-radius:12px;margin-bottom:12px;font-size:0.9rem;font-weight:600;"></div>
+                <div class="ve-editor-body" id="editorPanelBody">Clica num elemento para editar</div>
+            </aside>
+        </main>
+    </div>
+
+    <div class="ve-lock" id="lockScreen">
+        <div class="ve-lock-card">
+            <h2>Acesso Interno</h2>
+            <p>Insere a password para entrar no backoffice.</p>
+            <input id="passwordInput" type="password" placeholder="SICA-INTERNO-2026" autocomplete="off">
+            <div class="ve-lock-error" id="passwordError"></div>
+            <button class="ve-button" id="unlockButton" type="button">Entrar</button>
+        </div>
+    </div>
+
+    <script>
+        const ACCESS_PASSWORD = 'SICA-INTERNO-2026';
+        const AUTH_KEY = 'sica_visual_editor_phase_auth';
+        const pages = [
+            { label: '🧪 TESTE', path: 'TEST-VISUAL-EDITOR.html' },
+            { label: 'Home', path: 'index.html' },
+            { label: 'Sobre', path: 'sobre.html' },
+            { label: 'Resultados', path: 'resultados.html' },
+            { label: 'Blog', path: 'blog.html' },
+            { label: 'Artigo', path: 'artigo.html' },
+            { label: 'Ferramentas', path: 'ferramentas.html' },
+            { label: 'Acelerador Reviews', path: 'acelerador-reviews.html' },
+            { label: 'Marketing Digital Clinicas Dentarias', path: 'marketing-digital-clinicas-dentarias.html' },
+            { label: 'Home EN', path: 'index-en.html' },
+            { label: 'Quiz PT', path: 'pt/quiz/index.html' },
+            { label: 'Quiz EN', path: 'en/quiz/index.html' }
+        ];
+
+        const pageButtons = document.getElementById('pageButtons');
+        const editorFrame = document.getElementById('editorFrame');
+        const previewTitle = document.getElementById('previewTitle');
+        const previewStatus = document.getElementById('previewStatus');
+        const lockScreen = document.getElementById('lockScreen');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordError = document.getElementById('passwordError');
+        const unlockButton = document.getElementById('unlockButton');
+        const editorPanelBody = document.getElementById('editorPanelBody');
+        const exportChangesButton = document.getElementById('exportChangesButton');
+
+        let activePage = pages[0];
+        let selectedElement = null;
+        const changesMap = new Map();
+
+        function escapeForTemplateLiteral(value) {
+            return value
+                .replace(/\\/g, '\\\\')
+                .replace(/`/g, '\\`')
+                .replace(/\$\{/g, '\\${');
+        }
+
+        function setAuthState() {
+            const unlocked = localStorage.getItem(AUTH_KEY) === '1';
+            document.body.classList.toggle('is-locked', !unlocked);
+            lockScreen.hidden = unlocked;
+            if (!unlocked) {
+                passwordInput.focus();
+            }
+        }
+
+        function unlock() {
+            if (passwordInput.value.trim() !== ACCESS_PASSWORD) {
+                passwordError.textContent = 'Password incorreta.';
+                return;
+            }
+            localStorage.setItem(AUTH_KEY, '1');
+            passwordError.textContent = '';
+            passwordInput.value = '';
+            setAuthState();
+        }
+
+        function buildFrameSrcdoc(pagePath) {
+            const safePath = JSON.stringify(pagePath);
+            const injectedScript = `(function(){
+                const overlay = document.createElement('div');
+                overlay.style.position = 'fixed';
+                overlay.style.pointerEvents = 'none';
+                overlay.style.zIndex = '2147483646';
+                overlay.style.border = '2px solid #6F5AA3';
+                overlay.style.borderRadius = '8px';
+                overlay.style.display = 'none';
+                overlay.style.boxSizing = 'border-box';
+
+                const label = document.createElement('div');
+                label.style.position = 'fixed';
+                label.style.pointerEvents = 'none';
+                label.style.zIndex = '2147483647';
+                label.style.padding = '6px 10px';
+                label.style.borderRadius = '999px';
+                label.style.background = '#6F5AA3';
+                label.style.color = '#fff';
+                label.style.font = '700 12px/1 Inter, Arial, sans-serif';
+                label.style.display = 'none';
+
+                document.body.appendChild(overlay);
+                document.body.appendChild(label);
+
+                function normalizeText(v){return String(v||'').replace(/\\s+/g,' ').trim();}
+                function getRect(el){const r=el.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,top:r.top,left:r.left,right:r.right,bottom:r.bottom};}
+                function cut(v){const t=normalizeText(v);return t.length>20?t.slice(0,20)+'...':t;}
+                function editId(element){return element&&element.getAttribute?element.getAttribute('data-edit-id')||'':'';}
+                function bgImage(style){
+                    const v=style.backgroundImage||'';
+                    const m=v.match(/url\\(["']?(.*?)["']?\\)/i);
+                    return m?m[1]:'';
+                }
+
+                function pickEditableTarget(start){
+                    if(!start || !start.closest){return null;}
+                    return start.closest('[data-edit-id]');
+                }
+
+                function pickCandidateTarget(start){
+                    if(!start || !start.closest){return null;}
+                    return start.closest('h1,h2,h3,h4,h5,h6,p,a,button,span,strong,small,li,img,div');
+                }
+
+                document.addEventListener('mouseover', function(event){
+                    const el=pickEditableTarget(event.target);
+                    if(!el){overlay.style.display='none';label.style.display='none';return;}
+                    const rect=el.getBoundingClientRect();
+                    overlay.style.display='block';
+                    overlay.style.left=rect.left+'px';
+                    overlay.style.top=rect.top+'px';
+                    overlay.style.width=rect.width+'px';
+                    overlay.style.height=rect.height+'px';
+                    label.style.display='block';
+                    label.style.left=Math.max(8,rect.left)+'px';
+                    label.style.top=Math.max(8,rect.top-30)+'px';
+                    label.textContent=el.tagName.toLowerCase()+' '+cut(el.innerText||el.textContent||el.alt||'');
+                }, true);
+
+                document.addEventListener('mouseout', function(event){
+                    if(!event.relatedTarget||!document.contains(event.relatedTarget)){
+                        overlay.style.display='none';
+                        label.style.display='none';
+                    }
+                }, true);
+
+                document.addEventListener('click', function(event){
+                    const el=pickEditableTarget(event.target);
+                    if(!el){
+                        const candidate=pickCandidateTarget(event.target);
+                        if(candidate){
+                            event.preventDefault();
+                            event.stopPropagation();
+                            window.parent.postMessage({
+                                type:'ELEMENT_NOT_EDITABLE',
+                                tag:candidate.tagName.toLowerCase(),
+                                innerText:cut(candidate.innerText||candidate.textContent||candidate.alt||''),
+                                reason:'missing-data-edit-id'
+                            }, '*');
+                        }
+                        return;
+                    }
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const style=window.getComputedStyle(el);
+                    window.parent.postMessage({
+                        type:'ELEMENT_SELECTED',
+                        editId:editId(el),
+                        tag:el.tagName.toLowerCase(),
+                        className:el.className||'',
+                        innerText:normalizeText(el.innerText||el.textContent||''),
+                        src:(el.tagName.toLowerCase()==='img'?(el.getAttribute('src')||''):(el.querySelector('img')?.getAttribute('src')||'')),
+                        bgImage:bgImage(style),
+                        color:style.color||'',
+                        fontSize:style.fontSize||'',
+                        selector:editId(el),
+                        rect:getRect(el)
+                    }, '*');
+                }, true);
+
+                window.addEventListener('message', function(event){
+                    const data=event.data||{};
+                    if(data.type!=='APPLY_CHANGE'){return;}
+                    if(!data.editId){return;}
+                    const target=document.querySelector('[data-edit-id="'+CSS.escape(data.editId)+'"]');
+                    if(!target){return;}
+                    if(data.property==='text'){target.textContent=data.value||'';}
+                    if(data.property==='src'){target.setAttribute('src',data.value||'');}
+                    if(data.property==='backgroundImage'){target.style.backgroundImage=data.value?('url("'+data.value+'")'):'none';}
+                    if(data.property==='color'){target.style.color=data.value||'';}
+                    if(data.property==='backgroundColor'){target.style.backgroundColor=data.value||'';}
+                });
+            })();`;
+
+            const safeInjected = escapeForTemplateLiteral(injectedScript);
+
+            return `<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>html,body{margin:0;height:100%;font-family:Inter,Arial,sans-serif} .ve-loader{display:flex;align-items:center;justify-content:center;height:100%;color:#6F5AA3;font-weight:700}</style></head><body><div class="ve-loader" id="loader">A carregar página...</div><script>(async()=>{const page=${safePath};const injected=\`${safeInjected}\`;try{const response=await fetch(page,{cache:'no-store'});if(!response.ok){throw new Error('HTTP '+response.status);}const html=await response.text();const scriptTag='<script>'+injected.replace(/<\\/script>/gi,'<\\\\/script>')+'<\\/script>';const out=html.includes('</body>')?html.replace('</body>',scriptTag+'</body>'):html+scriptTag;document.open();document.write(out);document.close();}catch(error){document.body.innerHTML='<div class="ve-loader">Falha ao carregar '+page+'</div>';}})();<\/script></body></html>`;
+        }
+
+        function loadPage(page) {
+            activePage = page;
+            selectedElement = null;
+            previewTitle.textContent = page.label + ' (' + page.path + ')';
+            previewStatus.textContent = 'A carregar';
+            editorPanelBody.textContent = 'Clica num elemento para editar';
+            editorFrame.srcdoc = buildFrameSrcdoc(page.path);
+            document.querySelectorAll('.ve-page-button').forEach((button) => {
+                button.classList.toggle('is-active', button.dataset.path === page.path);
+            });
+        }
+
+        function toHexColor(value) {
+            if (!value) {
+                return '#000000';
+            }
+            if (value.startsWith('#')) {
+                if (value.length === 4) {
+                    return '#' + value[1] + value[1] + value[2] + value[2] + value[3] + value[3];
+                }
+                return value.slice(0, 7);
+            }
+            const match = value.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+            if (!match) {
+                return '#000000';
+            }
+            const toHex = (n) => Number(n).toString(16).padStart(2, '0');
+            return '#' + toHex(match[1]) + toHex(match[2]) + toHex(match[3]);
+        }
+
+        function changeKey(page, editId, property) {
+            return [page, editId, property].join('::');
+        }
+
+        function recordChange(page, editId, property, originalValue, newValue) {
+            const key = changeKey(page, editId, property);
+            if (String(originalValue || '') === String(newValue || '')) {
+                changesMap.delete(key);
+                return;
+            }
+            changesMap.set(key, {
+                editId,
+                property,
+                originalValue: originalValue || '',
+                newValue: newValue || '',
+                page
+            });
+        }
+
+        function applyToFrame(editId, property, value) {
+            editorFrame.contentWindow.postMessage({
+                type: 'APPLY_CHANGE',
+                editId,
+                property,
+                value
+            }, '*');
+        }
+
+        function renderEditorPanel(data) {
+            const isText = /^(h1|h2|h3|h4|h5|h6|p|a|button|span|strong|small|li|div)$/i.test(data.tag || '');
+            const isImg = (data.tag || '').toLowerCase() === 'img';
+            const isImgContainer = Boolean(data.src);
+            const className = String(data.className || '');
+            const editIdText = String(data.editId || '');
+            const looksLikeImageContainer = /thumb|image|img|visual|hero/i.test(className) || /thumb|image|img/i.test(editIdText);
+            const hasBgImage = Boolean(data.bgImage);
+            const canEditBgImage = hasBgImage || looksLikeImageContainer;
+
+            const html = [];
+            html.push('<div style="margin-bottom:12px;"><strong>ID Editável</strong><div style="font-size:0.8rem;color:#66617b;word-break:break-word;">' + (data.editId || 'sem-id') + '</div></div>');
+
+            if (isImg) {
+                html.push('<div style="border:1px solid #ece7f3;border-radius:14px;padding:12px;margin-bottom:12px;">');
+                html.push('<strong>Imagem</strong>');
+                html.push('<div style="margin-top:8px;margin-bottom:8px;"><img id="imgPreview" src="' + (data.src || '') + '" alt="preview" style="max-width:100%;border-radius:10px;border:1px solid #e7e2f0;"></div>');
+                html.push('<input id="imgFileInput" type="file" accept="image/*" style="width:100%;margin-bottom:8px;">');
+                html.push('<input id="imgSrcInput" type="text" value="' + (data.src || '') + '" placeholder="URL/caminho da imagem" style="width:100%;border:1px solid #dcd3ec;border-radius:10px;padding:8px 10px;margin-bottom:8px;">');
+                html.push('<button id="applyImgButton" class="ve-button" type="button">Aplicar</button>');
+                html.push('</div>');
+            }
+
+            if (isImgContainer && !isImg) {
+                html.push('<div style="border:1px solid #ece7f3;border-radius:14px;padding:12px;margin-bottom:12px;">');
+                html.push('<strong>Imagem</strong>');
+                html.push('<div style="margin-top:8px;margin-bottom:8px;"><img id="imgPreview" src="' + (data.src || '') + '" alt="preview" style="max-width:100%;border-radius:10px;border:1px solid #e7e2f0;"></div>');
+                html.push('<input id="imgFileInput" type="file" accept="image/*" style="width:100%;margin-bottom:8px;">');
+                html.push('<input id="imgSrcInput" type="text" value="' + (data.src || '') + '" placeholder="URL/caminho da imagem" style="width:100%;border:1px solid #dcd3ec;border-radius:10px;padding:8px 10px;margin-bottom:8px;">');
+                html.push('<button id="applyImgButton" class="ve-button" type="button">Aplicar</button>');
+                html.push('</div>');
+            }
+
+            if (isText) {
+                html.push('<div style="border:1px solid #ece7f3;border-radius:14px;padding:12px;margin-bottom:12px;">');
+                html.push('<strong>Texto</strong>');
+                html.push('<textarea id="textInput" style="width:100%;min-height:120px;border:1px solid #dcd3ec;border-radius:10px;padding:8px 10px;margin-top:8px;">' + (data.innerText || '') + '</textarea>');
+                html.push('<div style="font-size:0.78rem;color:#66617b;margin-top:6px;">Caracteres: <span id="textCounter">' + (data.innerText || '').length + '</span></div>');
+                html.push('<button id="applyTextButton" class="ve-button" type="button" style="margin-top:8px;">Aplicar</button>');
+                html.push('</div>');
+            }
+
+            if (canEditBgImage || data.color) {
+                html.push('<div style="border:1px solid #ece7f3;border-radius:14px;padding:12px;">');
+                html.push('<strong>Estilos</strong>');
+                if (canEditBgImage) {
+                    html.push('<div style="margin-top:8px;">');
+                    html.push('<label style="display:block;font-size:0.76rem;color:#6F5AA3;font-weight:700;margin-bottom:4px;">Imagem de fundo</label>');
+                    html.push('<input id="bgFileInput" type="file" accept="image/*" style="width:100%;margin-bottom:8px;">');
+                    html.push('<input id="bgImageInput" type="text" value="' + (data.bgImage || '') + '" placeholder="URL/caminho da imagem" style="width:100%;border:1px solid #dcd3ec;border-radius:10px;padding:8px 10px;margin-bottom:8px;">');
+                    html.push('<button id="applyBgImageButton" class="ve-button" type="button" style="margin-bottom:8px;">Aplicar</button>');
+                    html.push('</div>');
+                }
+                if (data.color) {
+                    html.push('<div>');
+                    html.push('<label style="display:block;font-size:0.76rem;color:#6F5AA3;font-weight:700;margin-bottom:4px;">Cor do texto</label>');
+                    html.push('<input id="colorInput" type="color" value="' + toHexColor(data.color) + '" style="width:100%;height:44px;border:1px solid #dcd3ec;border-radius:10px;padding:4px;margin-bottom:8px;">');
+                    html.push('<button id="applyColorButton" class="ve-button" type="button">Aplicar</button>');
+                    html.push('</div>');
+                }
+                html.push('</div>');
+            }
+
+            editorPanelBody.innerHTML = html.join('');
+
+            const textInput = document.getElementById('textInput');
+            const textCounter = document.getElementById('textCounter');
+            if (textInput && textCounter) {
+                textInput.addEventListener('input', () => {
+                    textCounter.textContent = String(textInput.value.length);
+                });
+            }
+
+            const imgPreview = document.getElementById('imgPreview');
+            const imgFileInput = document.getElementById('imgFileInput');
+            const imgSrcInput = document.getElementById('imgSrcInput');
+            if (imgFileInput && imgPreview && imgSrcInput) {
+                imgFileInput.addEventListener('change', () => {
+                    const file = imgFileInput.files && imgFileInput.files[0];
+                    if (!file) {
+                        return;
+                    }
+                    const blobUrl = URL.createObjectURL(file);
+                    imgPreview.src = blobUrl;
+                    imgSrcInput.value = file.name;
+                    imgSrcInput.dataset.previewBlob = blobUrl;
+                });
+            }
+
+            const bgFileInput = document.getElementById('bgFileInput');
+            const bgImageInput = document.getElementById('bgImageInput');
+            if (bgFileInput && bgImageInput) {
+                bgFileInput.addEventListener('change', () => {
+                    const file = bgFileInput.files && bgFileInput.files[0];
+                    if (!file) {
+                        return;
+                    }
+                    const blobUrl = URL.createObjectURL(file);
+                    bgImageInput.value = file.name;
+                    bgImageInput.dataset.previewBlob = blobUrl;
+                });
+            }
+
+            const applyImgButton = document.getElementById('applyImgButton');
+            if (applyImgButton && imgSrcInput) {
+                applyImgButton.addEventListener('click', () => {
+                    const value = (imgSrcInput.dataset.previewBlob || imgSrcInput.value || '').trim();
+                    applyToFrame(data.editId, 'src', value);
+                    recordChange(activePage.path, data.editId, 'src', data.src || '', imgSrcInput.value || value);
+                });
+            }
+
+            const applyTextButton = document.getElementById('applyTextButton');
+            if (applyTextButton && textInput) {
+                applyTextButton.addEventListener('click', () => {
+                    applyToFrame(data.editId, 'text', textInput.value);
+                    recordChange(activePage.path, data.editId, 'text', data.innerText || '', textInput.value);
+                });
+            }
+
+            const applyBgImageButton = document.getElementById('applyBgImageButton');
+            if (applyBgImageButton && bgImageInput) {
+                applyBgImageButton.addEventListener('click', () => {
+                    const value = (bgImageInput.dataset.previewBlob || bgImageInput.value || '').trim();
+                    applyToFrame(data.editId, 'backgroundImage', value);
+                    recordChange(activePage.path, data.editId, 'backgroundImage', data.bgImage || '', bgImageInput.value || value);
+                });
+            }
+
+            const applyColorButton = document.getElementById('applyColorButton');
+            const colorInput = document.getElementById('colorInput');
+            if (applyColorButton && colorInput) {
+                applyColorButton.addEventListener('click', () => {
+                    applyToFrame(data.editId, 'color', colorInput.value);
+                    recordChange(activePage.path, data.editId, 'color', toHexColor(data.color || ''), colorInput.value);
+                });
+            }
+        }
+
+        const exportFeedback = document.getElementById('exportFeedback');
+
+        function showFeedback(message, isSuccess) {
+            exportFeedback.textContent = message;
+            exportFeedback.style.display = 'block';
+            exportFeedback.style.background = isSuccess ? 'rgba(198, 219, 91, 0.2)' : 'rgba(155, 45, 63, 0.2)';
+            exportFeedback.style.color = isSuccess ? '#2a5a1a' : '#9b2d3f';
+            setTimeout(() => {
+                exportFeedback.style.display = 'none';
+            }, 4000);
+        }
+
+        function exportChanges() {
+            const changes = Array.from(changesMap.values()).filter((change) => change.editId);
+            if (changes.length === 0) {
+                showFeedback('Nenhuma alteração com ID editável para exportar', false);
+                return;
+            }
+
+            exportChangesButton.disabled = true;
+            showFeedback('A exportar alterações...', true);
+
+            fetch('apply-changes.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(changes)
+            })
+            .then(async (response) => {
+                const rawText = await response.text();
+                let data = null;
+
+                try {
+                    data = rawText ? JSON.parse(rawText) : null;
+                } catch (error) {
+                    throw new Error(rawText || 'Resposta vazia do servidor');
+                }
+
+                if (!response.ok) {
+                    const errorText = (data && ((data.errors || []).join(', ') || data.error)) || ('HTTP ' + response.status);
+                    throw new Error(errorText);
+                }
+
+                return data;
+            })
+            .then((data) => {
+                exportChangesButton.disabled = false;
+                if (data.success) {
+                    const fileCount = Object.keys(data.files || {}).length;
+                    const changeCount = data.total || 0;
+                    showFeedback('Alterações aplicadas: ' + changeCount + ' mudança(s) em ' + fileCount + ' ficheiro(s)', true);
+                    changesMap.clear();
+                } else {
+                    const errorText = (data.errors || []).join(', ') || data.error || 'Erro desconhecido';
+                    showFeedback('Erro: ' + errorText, false);
+                }
+            })
+            .catch((error) => {
+                exportChangesButton.disabled = false;
+                showFeedback('Erro de conexão: ' + error.message, false);
+            });
+        }
+
+        function renderPageButtons() {
+            pageButtons.innerHTML = '';
+            pages.forEach((page) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 've-page-button';
+                button.textContent = page.label;
+                button.dataset.path = page.path;
+                button.addEventListener('click', () => {
+                    loadPage(page);
+                });
+                pageButtons.appendChild(button);
+            });
+        }
+
+        editorFrame.addEventListener('load', () => {
+            previewStatus.textContent = 'Pronto';
+        });
+
+        window.addEventListener('message', (event) => {
+            const data = event.data || {};
+            if (data.type === 'ELEMENT_NOT_EDITABLE') {
+                selectedElement = null;
+                editorPanelBody.innerHTML = '' +
+                    '<div style="padding:10px;border:1px solid #eadff7;border-radius:12px;background:#f8f4ff;">' +
+                        '<strong style="display:block;margin-bottom:8px;color:#34224D;">Elemento não exportável</strong>' +
+                        '<p style="margin:0;color:#4b3f67;font-size:0.9rem;line-height:1.45;">Este bloco ainda não tem <code>data-edit-id</code>. Para ficar editável no Visual Editor, adiciona esse atributo no HTML.</p>' +
+                        '<p style="margin:8px 0 0;color:#6b5a8c;font-size:0.82rem;">Alvo: ' + (data.tag || 'elemento') + ' · ' + (data.innerText || 'sem texto') + '</p>' +
+                    '</div>';
+                return;
+            }
+
+            if (data.type !== 'ELEMENT_SELECTED') {
+                return;
+            }
+
+            selectedElement = data;
+            renderEditorPanel(data);
+        });
+
+        exportChangesButton.addEventListener('click', exportChanges);
+
+        unlockButton.addEventListener('click', unlock);
+        passwordInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                unlock();
+            }
+        });
+
+        renderPageButtons();
+        setAuthState();
+        loadPage(activePage);
+    </script>
+</body>
+</html>
