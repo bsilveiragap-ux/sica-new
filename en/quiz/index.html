@@ -683,33 +683,33 @@
       <div class="result-metrics" data-edit-id="en-quiz-index-div-152">
         <div class="metric" data-edit-id="en-quiz-index-div-153">
           <div class="metric-value" data-edit-id="en-quiz-index-div-027">3×</div>
-          <div class="metric-label" data-edit-id="en-quiz-index-div-028">more enquiries with an active digital presence</div>
+          <div class="metric-label" data-edit-id="en-quiz-index-div-161">more enquiries with an active digital presence</div>
         </div>
         <div class="metric" data-edit-id="en-quiz-index-div-154">
-          <div class="metric-value" data-edit-id="en-quiz-index-div-029">€4k+</div>
-          <div class="metric-label" data-edit-id="en-quiz-index-div-030">average value per implant patient</div>
+          <div class="metric-value" data-edit-id="en-quiz-index-div-162">€4k+</div>
+          <div class="metric-label" data-edit-id="en-quiz-index-div-163">average value per implant patient</div>
         </div>
         <div class="metric" data-edit-id="en-quiz-index-div-155">
-          <div class="metric-value" data-edit-id="en-quiz-index-div-031">30d</div>
-          <div class="metric-label" data-edit-id="en-quiz-index-div-032">to see the first measurable results</div>
+          <div class="metric-value" data-edit-id="en-quiz-index-div-164">30d</div>
+          <div class="metric-label" data-edit-id="en-quiz-index-div-165">to see the first measurable results</div>
         </div>
         <div class="metric" data-edit-id="en-quiz-index-div-156">
-          <div class="metric-value" data-edit-id="en-quiz-index-div-033">€0</div>
-          <div class="metric-label" data-edit-id="en-quiz-index-div-034">cost of this diagnostic session</div>
+          <div class="metric-value" data-edit-id="en-quiz-index-div-166">€0</div>
+          <div class="metric-label" data-edit-id="en-quiz-index-div-167">cost of this diagnostic session</div>
         </div>
       </div>
 
       <a data-edit-id="en-quiz-index-a-001" class="cta-btn" href="https://calendly.com/SICA-LINK" target="_blank" rel="noopener">
         Choose a time slot (20 free minutes) →
       </a>
-      <div class="cta-note" data-edit-id="en-quiz-index-div-035">📅 Pick your preferred time slot &nbsp;·&nbsp; No commitment</div>
+      <div class="cta-note" data-edit-id="en-quiz-index-div-168">📅 Pick your preferred time slot &nbsp;·&nbsp; No commitment</div>
     </div>
 
     <!-- ──────────── NOT QUALIFIED ──────────── -->
     <div class="step" id="step-notqualified" data-edit-id="en-quiz-index-div-157">
       <div style="text-align:center; margin-bottom:24px;">
         <div class="nq-icon" data-edit-id="en-quiz-index-div-158">⏳</div>
-        <div class="nq-badge" data-edit-id="en-quiz-index-div-036">Assessment Complete</div>
+        <div class="nq-badge" data-edit-id="en-quiz-index-div-169">Assessment Complete</div>
         <div class="nq-title" data-edit-id="en-quiz-index-div-037">We don't have availability for your profile right now</div>
         <div class="nq-sub" data-edit-id="en-quiz-index-div-038">But we can notify you when new spots open.</div>
       </div>
@@ -731,6 +731,54 @@
 <script>
   /* ── State ── */
   var answers = {};
+
+  /*
+   * Some visual-editor saves can flatten option buttons into plain text.
+   * Rebuild malformed option markup so UI and click behavior stay stable.
+   */
+  function sanitizeOptionMarkup() {
+    var optionGroups = document.querySelectorAll('.options');
+
+    optionGroups.forEach(function(group) {
+      Array.from(group.childNodes).forEach(function(node) {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+          group.removeChild(node);
+        }
+      });
+
+      var buttons = group.querySelectorAll('button.option');
+      buttons.forEach(function(btn, index) {
+        var hasStructure = btn.querySelector('.option-letter') &&
+                           btn.querySelector('.option-text') &&
+                           btn.querySelector('.option-arrow');
+        if (hasStructure) return;
+
+        var raw = (btn.textContent || '').replace(/\s+/g, ' ').trim();
+        var fallbackLetter = String.fromCharCode(65 + index);
+        var match = raw.match(/^([A-C])\s*(.*?)(?:\s*→)?$/);
+        var letter = match ? match[1] : fallbackLetter;
+        var text = match ? match[2] : raw;
+
+        btn.textContent = '';
+
+        var letterEl = document.createElement('div');
+        letterEl.className = 'option-letter';
+        letterEl.textContent = letter;
+
+        var textEl = document.createElement('div');
+        textEl.className = 'option-text';
+        textEl.textContent = text;
+
+        var arrowEl = document.createElement('div');
+        arrowEl.className = 'option-arrow';
+        arrowEl.textContent = '→';
+
+        btn.appendChild(letterEl);
+        btn.appendChild(textEl);
+        btn.appendChild(arrowEl);
+      });
+    });
+  }
 
   var stepData = {
     1:              { label: 'Question 1 of 5', pct: 20 },
@@ -954,6 +1002,8 @@
       console.error('Omnisend error:', err);
     });
   }
+
+  sanitizeOptionMarkup();
 </script>
 
 </body>
