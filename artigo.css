@@ -564,3 +564,60 @@
 
     .art-meta { gap: 12px; }
 }
+
+/* ── Blog tag: Web Design ─────────────────────────────── */
+.blog-tag--web-design { background: #f0f0ff; color: #4c3d8f; }
+
+/* ── Article figure / image placeholder ──────────────── */
+.art-figure {
+    margin: 32px 0;
+}
+.art-figure figcaption {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: #9CA3AF;
+    text-align: center;
+    font-style: italic;
+}
+
+/* ── Final CTA section ───────────────────────────────── */
+.art-final-cta {
+    background: #34224D;
+    padding: 72px 24px;
+    margin-top: 0;
+}
+.art-final-cta__inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.art-final-cta__copy h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 12px;
+    line-height: 1.25;
+}
+.art-final-cta__copy p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.72);
+    margin: 0;
+    max-width: 480px;
+}
+.art-final-cta .btn-primary {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .art-final-cta__inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .art-final-cta__copy p { max-width: 100%; }
+    .art-final-cta .btn-primary { width: 100%; text-align: center; }
+}

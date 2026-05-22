@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -8,9 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="blog.css">
-    <link rel="stylesheet" href="artigo.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../blog.css">
+    <link rel="stylesheet" href="../artigo.css">
+    <script src="/assets/js/cookie-consent.js"></script>
 </head>
 <body>
 
@@ -18,69 +19,44 @@
         <span class="scroll-progress-bar" id="scrollProgressBar"></span>
     </div>
 
-    <div class="promo-bar">
-        <div class="container promo-bar-inner">
-            <div class="promo-bar-wrapper">
-                <!-- LEFT SIDE: Icons -->
-                <div class="promo-bar-icons">
-                    <!-- Instagram -->
-                    <a href="https://instagram.com/sicacreative" target="_blank" rel="noopener noreferrer" class="promo-link promo-link--instagram" title="Instagram">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5"/>
-                            <circle cx="12" cy="12" r="3" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5"/>
-                            <circle cx="17.5" cy="6.5" r="1" fill="rgba(255, 255, 255, 0.85)"/>
-                        </svg>
-                    </a>
-
-                    <!-- LinkedIn -->
-                    <a href="https://linkedin.com/company/sicacreative" target="_blank" rel="noopener noreferrer" class="promo-link promo-link--linkedin" title="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <rect x="2" y="2" width="20" height="20" rx="2" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5"/>
-                            <path d="M5.5 9v8.5M5.5 5.5a1 1 0 1 1 2 0 1 1 0 0 1-2 0" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.2" stroke-linecap="round"/>
-                            <path d="M9.5 9v8.5c0 0.5 0.5 1 1 1h2v-5c0-1 0.5-2 1.5-2 1 0 1.5 0.5 1.5 2v5h2v-5.5c0-2-0.5-3.5-2-3.5-1 0-1.5 0.5-2 1v-1" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-
-                    <!-- English Flag -->
-                    <a href="index-en.html" class="promo-link promo-link--flag" title="Switch to English">
-                        <svg width="18" height="18" viewBox="0 0 60 30" fill="none" aria-hidden="true">
-                            <rect width="60" height="30" fill="#012169"/>
-                            <path d="M0 0L60 30M60 0L0 30" stroke="white" stroke-width="6"/>
-                            <path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="4" stroke-dasharray="0.1,100"/>
-                            <path d="M30 0v30M0 15h60" stroke="white" stroke-width="10"/>
-                            <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- RIGHT SIDE: Email -->
-                <a data-edit-id="artigo-a-001" href="mailto:info@sicacreative.com" class="promo-email">info@sicacreative.com</a>
-            </div>
-        </div>
-    </div>
-
     <nav class="navbar">
         <div class="container navbar-inner">
-            <a data-edit-id="artigo-a-002" href="index.html" class="navbar-logo">Sica Creative</a>
+            <a data-edit-id="global-nav-logo" href="../index" class="navbar-logo">Sica Creative</a>
             <button class="hamburger" id="hamburger" aria-label="Abrir menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="navbar-menu" id="navMenu">
-                <li><a data-edit-id="artigo-a-003" href="index.html#services">Serviços</a></li>
-                <li><a data-edit-id="artigo-a-004" href="resultados.html">Resultados</a></li>
-                <li><a data-edit-id="artigo-a-005" href="ferramentas.html">Ferramentas</a></li>
-                <li><a data-edit-id="artigo-a-006" href="blog.html" aria-current="page">Blog</a></li>
-                <li><a data-edit-id="artigo-a-007" href="sobre.html">Sobre</a></li>
                 <li class="has-dropdown">
-                    <button class="dropdown-trigger">Especialidades <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    <button class="dropdown-trigger"><span data-edit-id="global-nav-servicos">Serviços</span> <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                     <ul class="nav-dropdown">
-                        <li><a data-edit-id="artigo-a-008" href="marketing-digital-clinicas-dentarias.html">Clínicas Dentárias</a></li>
+                        <li><a href="../index#services" data-edit-id="global-nav-link-webdesign">Web Design</a></li>
+                        <li><a href="../index#services" data-edit-id="global-nav-link-seo">SEO</a></li>
+                        <li><a href="../index#services" data-edit-id="global-nav-link-googleads">Google Ads</a></li>
+                        <li><a href="../index#services" data-edit-id="global-nav-link-metaads">Meta Ads</a></li>
+                        <li><a href="../index#services" data-edit-id="global-nav-link-socialmedia">Social Media</a></li>
                     </ul>
                 </li>
-                <li><a data-edit-id="artigo-a-009" href="index.html#final-cta">Contacto</a></li>
+                <li><a href="../clientes" data-edit-id="global-nav-resultados">Clientes</a></li>
+                <li class="has-dropdown">
+                    <button class="dropdown-trigger"><span data-edit-id="global-nav-sobre">Sobre</span> <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    <ul class="nav-dropdown">
+                        <li><a href="../sobre" data-edit-id="global-nav-link-agencia">A Agência</a></li>
+                        <li><a href="../blog" data-edit-id="global-nav-link-blog">Blog</a></li>
+                        <li><a href="../marketing-digital-clinicas-dentarias" data-edit-id="global-nav-link-especialidades">Especialidades</a></li>
+                        <li><a href="../ferramentas" data-edit-id="global-nav-link-ferramentas">Ferramentas</a></li>
+                    </ul>
+                </li>
+                <li><a href="../index#contact-form" data-edit-id="global-nav-contacto">Contacte-nos</a></li>
+                <li class="nav-lang-mobile"><span>🌐</span> <span class="lang-m-active">PT</span> <span class="lang-m-sep">/</span> <a href="reduce-cpa-google-ads" class="lang-m-link">EN</a></li>
             </ul>
+            <div class="lang-switcher" aria-label="Selecionar idioma">
+                <span class="lang-switcher__active">PT</span>
+                <span class="lang-switcher__sep" aria-hidden="true">|</span>
+                <a href="reduce-cpa-google-ads" class="lang-switcher__link" data-edit-id="global-nav-lang-en">EN</a>
+            <a href="../pt/quiz/index" class="btn btn-primary btn-sm navbar-cta-scroll">Agendar Reunião</a>
+            </div>
         </div>
     </nav>
 
@@ -92,9 +68,9 @@
 
             <!-- Breadcrumb -->
             <nav class="art-breadcrumb" aria-label="Breadcrumb">
-                <a data-edit-id="artigo-a-010" href="blog.html">Blog</a>
+                <a data-edit-id="artigo-a-010" href="../blog">Blog</a>
                 <span data-edit-id="artigo-span-001" aria-hidden="true">›</span>
-                <a data-edit-id="artigo-a-011" href="blog.html">Google Ads</a>
+                <a data-edit-id="artigo-a-011" href="../blog">Google Ads</a>
                 <span data-edit-id="artigo-span-002" aria-hidden="true">›</span>
                 <span data-edit-id="artigo-span-003">Como reduzir o CPA em 30%</span>
             </nav>
@@ -141,7 +117,7 @@
     ═══════════════════════════════════════════════════════ -->
     <div class="art-cover">
         <div class="art-cover__img">
-            <img data-edit-id="artigo-img-001" src="assets/ferramentas/google-business-thumbnail.jpg"
+            <img data-edit-id="artigo-img-001" src="../assets/ferramentas/google-business-thumbnail.jpg"
                  alt="Dashboard Google Ads com métricas de CPA" loading="eager">
         </div>
     </div>
@@ -227,7 +203,7 @@
 
             <h2 data-edit-id="artigo-h2-006" id="sec-6">Conclusão: um processo, não uma ação</h2>
             <p data-edit-id="artigo-p-014">Reduzir o CPA de forma sustentável não é o resultado de um ajuste pontual. É o resultado de um processo sistemático de diagnóstico, teste e otimização contínua. As contas que mais crescem são as que têm ritmo de iteração mais alto — não necessariamente maior orçamento.</p>
-            <p>Se quer perceber onde a sua conta está a perder margem, <a data-edit-id="artigo-a-012" href="index.html#final-cta">fale com a nossa equipa</a>. Fazemos uma análise inicial sem compromisso.</p>
+            <p>Se quer perceber onde a sua conta está a perder margem, <a data-edit-id="artigo-a-012" href="../index#final-cta">fale com a nossa equipa</a>. Fazemos uma análise inicial sem compromisso.</p>
 
         </main>
 
@@ -253,7 +229,7 @@
                 <!-- Sidebar CTA -->
                 <div class="art-sidebar-cta">
                     <p data-edit-id="artigo-p-015">Quer saber onde a sua conta está a perder margem?</p>
-                    <a data-edit-id="artigo-a-019" href="index.html#final-cta" class="btn btn-primary btn-full">Auditoria Gratuita</a>
+                    <a data-edit-id="artigo-a-019" href="../index#final-cta" class="btn btn-primary btn-full">Auditoria Gratuita</a>
                 </div>
 
             </div>
@@ -370,7 +346,7 @@
                 <span data-edit-id="artigo-span-025" class="section-label">Hora de agir</span>
                 <h2 data-edit-id="artigo-h2-008">Se quer previsibilidade comercial, este é o próximo passo. Solicite a auditoria gratuita e veja onde pode crescer já.</h2>
             </div>
-            <a data-edit-id="artigo-a-020" href="mailto:contato@sicacreative.com" class="btn btn-primary">Receber Auditoria</a>
+            <a data-edit-id="artigo-a-020" href="mailto:info@sicacreative.com" class="btn btn-primary">Agendar Reunião</a>
         </div>
     </footer>
 
@@ -378,47 +354,57 @@
         <div class="container site-footer-inner">
             <div class="footer-brand">
                 <div class="footer-logo">Sica Creative</div>
-                <p data-edit-id="artigo-p-018">Uma agência digital com presença clara, comunicação moderna e execução orientada a resultados.</p>
+                <p data-edit-id="global-footer-tagline">Uma agência digital com presença clara, comunicação moderna e execução orientada a resultados.</p>
             </div>
             <div class="footer-links-grid">
                 <div>
                     <h3 data-edit-id="artigo-h3-006">Serviços</h3>
                     <ul>
-                        <li><a data-edit-id="artigo-a-021" href="index.html#services">Google Ads</a></li>
-                        <li><a data-edit-id="artigo-a-022" href="index.html#services">SEO</a></li>
-                        <li><a data-edit-id="artigo-a-023" href="index.html#services">CRO</a></li>
+                        <li><a data-edit-id="artigo-a-021" href="../index#services">Google Ads</a></li>
+                        <li><a data-edit-id="artigo-a-022" href="../index#services">SEO</a></li>
+                        <li><a data-edit-id="artigo-a-023" href="../index#services">CRO</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 data-edit-id="artigo-h3-007">Empresa</h3>
                     <ul>
-                        <li><a data-edit-id="artigo-a-024" href="resultados.html">Resultados</a></li>
-                        <li><a data-edit-id="artigo-a-025" href="ferramentas.html">Ferramentas</a></li>
-                        <li><a data-edit-id="artigo-a-026" href="blog.html">Blog</a></li>
-                        <li><a data-edit-id="artigo-a-027" href="index.html#final-cta">Contacto</a></li>
+                        <li><a data-edit-id="artigo-a-024" href="../clientes">Clientes</a></li>
+                        <li><a data-edit-id="artigo-a-025" href="../ferramentas">Ferramentas</a></li>
+                        <li><a data-edit-id="artigo-a-026" href="../blog">Blog</a></li>
+                        <li><a data-edit-id="artigo-a-027" href="../index#final-cta">Contacte-nos</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 data-edit-id="artigo-h3-008">Contacto</h3>
                     <ul>
-                        <li><a data-edit-id="artigo-a-028" href="mailto:contato@sicacreative.com">contato@sicacreative.com</a></li>
-                        <li><a data-edit-id="artigo-a-029" href="tel:+351912345678">+351 912 345 678</a></li>
-                        <li><a data-edit-id="artigo-a-030" href="index.html#final-cta">Agendar auditoria</a></li>
+                        <li><a data-edit-id="global-footer-email" href="mailto:info@sicacreative.com">info@sicacreative.com</a></li>
+                        <li><a data-edit-id="global-footer-phone" href="tel:+351912345678">+351 912 345 678</a></li>
+                        <li><a data-edit-id="artigo-a-030" href="../index#final-cta">Agendar auditoria</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container footer-bottom">
-            <p data-edit-id="artigo-p-019">© 2026 Sica Creative. Todos os direitos reservados.</p>
+            <p data-edit-id="global-footer-copyright">© 2026 Sica Creative. Todos os direitos reservados.</p>
             <div class="footer-policy-links">
                 <a data-edit-id="artigo-a-031" href="#">Política de Privacidade</a>
                 <a data-edit-id="artigo-a-032" href="#">Termos de Uso</a>
-                <a data-edit-id="artigo-a-033" href="#">Cookies</a>
+                <a data-edit-id="artigo-a-033" href="../politica-cookies">Cookies</a>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="artigo.js"></script>
+    <script src="../script.js"></script>
+    <script src="../artigo.js"></script>
+    <script type="text/javascript">
+        window.omnisend = window.omnisend || [];
+        omnisend.push(["brandID", "6981e17d27460b4ce15c57f3"]);
+        omnisend.push(["track", "$pageViewed"]);
+        !function(){var e=document.createElement("script");
+        e.type="text/javascript",e.async=!0,
+        e.src="https://omnisnippet1.com/inshop/launcher-v2.js";
+        var t=document.getElementsByTagName("script")[0];
+        t.parentNode.insertBefore(e,t)}();
+    </script>
 </body>
 </html>

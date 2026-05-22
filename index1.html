@@ -6,9 +6,104 @@
     <title>Sica Creative | Agência de Marketing Digital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="/assets/js/cookie-consent.js"></script>
+    <style>
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-wordmark {
+            display: flex;
+            align-items: baseline;
+            gap: 3px;
+        }
+        .logo-sica {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #34224D;
+            line-height: 1;
+        }
+        .logo-creative {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #34224D;
+            letter-spacing: 0.08em;
+        }
+        .nav-logo-img {
+            height: 44px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .nav-logo-img[src=""],
+        .nav-logo-img:not([src]) {
+            display: none;
+        }
+        .nav-logo-img[src=""] ~ .logo-wordmark,
+        .nav-logo-img:not([src]) ~ .logo-wordmark {
+            display: flex;
+        }
+        .nav-logo-img[src]:not([src=""]) ~ .logo-wordmark {
+            display: none;
+        }
+        .navbar-menu {
+            flex: 1;
+            justify-content: flex-end;
+            gap: 0;
+        }
+
+        @media (min-width: 769px) {
+            .navbar-menu > li > a {
+                padding: 0 14px;
+                display: inline-block;
+                white-space: nowrap;
+            }
+
+            li.nav-item-contactos {
+                overflow: hidden;
+                max-width: 120px;
+                opacity: 1;
+                white-space: nowrap;
+                transition: max-width 0.3s ease, opacity 0.25s ease;
+            }
+
+            .navbar.header--scrolled li.nav-item-contactos {
+                max-width: 0;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .navbar-cta-wrapper {
+                overflow: hidden;
+                max-width: 0;
+                opacity: 0;
+                flex-shrink: 0;
+                white-space: nowrap;
+                transition: max-width 0.35s ease, opacity 0.3s ease;
+            }
+
+            .navbar.header--scrolled .navbar-cta-wrapper {
+                max-width: 200px;
+                opacity: 1;
+            }
+        }
+        .hero-visual-img {
+            width: 100%;
+            min-height: 420px;
+            object-fit: cover;
+            border-radius: 16px;
+            display: block;
+            background: #f0ecf8;
+        }
+    </style>
 </head>
 <body>
     <div class="scroll-progress" aria-hidden="true">
@@ -17,42 +112,33 @@
 
     <nav class="navbar" id="mainNavbar">
         <div class="container navbar-inner">
-            <a href="index" class="navbar-logo" data-edit-id="global-nav-logo">Sica Creative</a>
+            <a href="index1" class="navbar-logo" data-edit-id="home-nav-logo">
+                <img
+                    src=""
+                    alt="Sica Creative"
+                    data-edit-id="home-nav-logo-img"
+                    class="nav-logo-img"
+                >
+                <span class="logo-wordmark">
+                    <span class="logo-sica">Sica</span><span class="logo-creative">creative</span>
+                </span>
+            </a>
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="navbar-menu" id="navMenu">
-                <li class="has-dropdown">
-                    <button class="dropdown-trigger"><span data-edit-id="global-nav-servicos">Serviços</span> <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                    <ul class="nav-dropdown">
-                        <li><a href="index#services" data-edit-id="global-nav-link-webdesign">Web Design</a></li>
-                        <li><a href="index#services" data-edit-id="global-nav-link-seo">SEO</a></li>
-                        <li><a href="index#services" data-edit-id="global-nav-link-googleads">Google Ads</a></li>
-                        <li><a href="index#services" data-edit-id="global-nav-link-metaads">Meta Ads</a></li>
-                        <li><a href="index#services" data-edit-id="global-nav-link-socialmedia">Social Media</a></li>
-                    </ul>
-                </li>
-                <li><a href="clientes" data-edit-id="global-nav-resultados">Clientes</a></li>
-                <li class="has-dropdown">
-                    <button class="dropdown-trigger"><span data-edit-id="global-nav-sobre">Sobre</span> <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                    <ul class="nav-dropdown">
-                        <li><a href="sobre" data-edit-id="global-nav-link-agencia">A Agência</a></li>
-                        <li><a href="blog" data-edit-id="global-nav-link-blog">Blog</a></li>
-                        <li><a href="marketing-digital-clinicas-dentarias" data-edit-id="global-nav-link-especialidades">Especialidades</a></li>
-                        <li><a href="ferramentas" data-edit-id="global-nav-link-ferramentas">Ferramentas</a></li>
-                    </ul>
-                </li>
-                <li><a href="index#contact-form" data-edit-id="global-nav-contacto">Contacte-nos</a></li>
-                <li class="lang-switcher" aria-label="Selecionar idioma">
-                    <span class="lang-switcher__active">PT</span>
-                    <span class="lang-switcher__sep" aria-hidden="true">|</span>
-                    <a href="index-en" class="lang-switcher__link" data-edit-id="global-nav-lang-en">EN</a>
-                </li>
-                <li class="nav-lang-mobile"><span>🌐</span> <span class="lang-m-active">PT</span> <span class="lang-m-sep">/</span> <a href="index-en" class="lang-m-link">EN</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="clientes">Case Studies</a></li>
+                <li><a href="sobre">Sobre</a></li>
+                <li><a href="blog">Blog</a></li>
+                <li><a href="ferramentas">Loja</a></li>
+                <li class="nav-item-contactos"><a href="contacto">Contactos</a></li>
             </ul>
-            <a href="pt/quiz/index" class="btn btn-primary btn-sm navbar-cta-scroll" data-edit-id="global-nav-cta">Agendar Reunião</a>
+            <div class="navbar-cta-wrapper">
+                <a href="contacto" class="btn btn-primary btn-sm">Contactos</a>
+            </div>
         </div>
     </nav>
 
@@ -63,8 +149,8 @@
                 <h1 data-edit-id="home-hero-h1">Mais faturação. Menos incerteza.</h1>
                 <p data-edit-id="home-hero-p">Transformamos investimento em marketing num fluxo estável de contactos qualificados para que possa crescer com previsibilidade todos os meses.</p>
                 <div class="hero-actions">
-                    <a href="pt/quiz/index" class="btn btn-primary" data-edit-id="home-hero-cta-primary">Agendar Reunião</a>
-                    <a href="clientes" class="btn btn-secondary" data-edit-id="home-hero-cta-secondary">Ver Resultados Reais</a>
+                    <a href="pt/quiz/index" class="btn btn-primary" data-edit-id="home-hero-cta-primary">Contacte-nos</a>
+                    <a href="#services" class="btn btn-secondary" data-edit-id="home-hero-cta-secondary">Ver Resultados Reais</a>
                 </div>
                 <div class="hero-trust" aria-label="Indicadores de confiança">
                     <span data-edit-id="home-hero-trust-1"><i aria-hidden="true">✓</i>+50 empresas ajudadas</span>
@@ -72,64 +158,14 @@
                     <span data-edit-id="home-hero-trust-3"><i aria-hidden="true">◷</i>Relatórios semanais</span>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="visual-card">
-                    <div class="visual-topbar">
-                        <span class="visual-tag" data-edit-id="home-dash-title">Painel Sica Growth</span>
-                        <span class="visual-live" data-edit-id="home-dash-live">Resultados em tempo real</span>
-                    </div>
-                    <div class="visual-screen">
-                        <div class="visual-chart-card">
-                            <div class="visual-chart-header">
-                                <p>Crescimento de Leads (30 dias)</p>
-                                <strong class="countup" data-target="42" data-prefix="+" data-suffix="%">+42%</strong>
-                            </div>
-                            <div class="visual-chart-grid" aria-hidden="true">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <svg class="visual-chart" viewBox="0 0 360 170" role="img" aria-label="Gráfico de crescimento de leads">
-                                <defs>
-                                    <linearGradient id="chartStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#b7d356" />
-                                        <stop offset="100%" stop-color="#6f5aa3" />
-                                    </linearGradient>
-                                </defs>
-                                <polyline points="0,145 38,130 76,122 114,110 152,96 190,86 228,70 266,64 304,49 342,32" />
-                            </svg>
-                            <div class="visual-metrics">
-                                <article class="visual-metric-card">
-                                    <strong class="countup" data-target="42" data-prefix="+" data-suffix="%">+42%</strong>
-                                    <span>Leads</span>
-                                </article>
-                                <article class="visual-metric-card">
-                                    <strong class="countup" data-target="-18" data-suffix="%">-18%</strong>
-                                    <span>Custo de Aquisição</span>
-                                </article>
-                                <article class="visual-metric-card">
-                                    <strong class="countup" data-target="3.8" data-suffix="x" data-decimals="1">3,8x</strong>
-                                    <span>ROI médio</span>
-                                </article>
-                            </div>
-                        </div>
-                        <div class="visual-kpis">
-                            <article class="visual-kpi">
-                                <span>Leads esta semana</span>
-                                <strong class="countup" data-target="186">186</strong>
-                            </article>
-                            <article class="visual-kpi">
-                                <span>Custo por lead</span>
-                                <strong class="countup" data-target="12.8" data-prefix="€" data-decimals="2">€12,80</strong>
-                            </article>
-                            <article class="visual-kpi">
-                                <span>Taxa de conversão</span>
-                                <strong class="countup" data-target="13.4" data-suffix="%" data-decimals="1">13,4%</strong>
-                            </article>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-visual" data-edit-id="home-hero-visual">
+                <img
+                    src=""
+                    alt="Painel de crescimento Sica Creative"
+                    data-edit-id="home-hero-visual-image"
+                    class="hero-visual-img"
+                    loading="eager"
+                >
             </div>
         </div>
     </header>
@@ -458,33 +494,27 @@
                     <p data-edit-id="home-blog-p">Conteúdos práticos para aumentar eficiência de aquisição, melhorar conversão e escalar com consistência.</p>
                 </div>
                 <div class="blog-grid">
-                    <a class="blog-card" href="artigos-de-blog/reduzir-cpa-google-ads">
+                    <article class="blog-card">
                         <div class="blog-thumb">
-                            <img data-edit-id="home-blog-img-001" src="assets/ferramentas/google-business-thumbnail.jpg" alt="Dashboard Google Ads com métricas de CPA" loading="lazy">
+                            <img data-edit-id="home-blog-img-001" src="assets/ferramentas/google-business-thumbnail.jpg" alt="Perfil de negócio Google com métricas de presença local" loading="lazy">
                         </div>
-                        <span class="blog-tag blog-tag--google-ads" style="margin-bottom:12px;display:inline-block;">Google Ads</span>
-                        <h3 data-edit-id="home-blog-1-h3">Como reduzir o CPA em 30% sem cortar volume de leads</h3>
-                        <p data-edit-id="home-blog-1-p">Segmentação inteligente, criativos testados e estrutura de conta para baixar o custo de aquisição sem sacrificar o fluxo de contactos qualificados.</p>
-                        <span class="blog-read-more">Ler artigo →</span>
-                    </a>
-                    <a class="blog-card" href="artigos-de-blog/seo-local-clinicas">
+                        <h3 data-edit-id="home-blog-1-h3">Como reduzir o CPA em 30%</h3>
+                        <p data-edit-id="home-blog-1-p">Segmentação, criativos e estrutura de conta para reduzir custo de aquisição sem perder volume.</p>
+                    </article>
+                    <article class="blog-card">
                         <div class="blog-thumb">
-                            <img data-edit-id="home-blog-img-002" src="assets/ferramentas/google-business-thumbnail.jpg" alt="Ficha Google Business Profile de uma clínica com avaliações e mapa local" loading="lazy">
+                            <img data-edit-id="home-blog-img-002" src="assets/blog/seo-google-search-console.jpg" alt="Especialista a analisar Google Search Console num MacBook" loading="lazy">
                         </div>
-                        <span class="blog-tag blog-tag--seo" style="margin-bottom:12px;display:inline-block;">SEO · Saúde</span>
-                        <h3 data-edit-id="home-blog-2-h3">SEO Local para Clínicas: Como Aparecer no Google Quando os Pacientes Pesquisam</h3>
-                        <p data-edit-id="home-blog-2-p">A ferramenta de marketing digital com melhor retorno para clínicas — e ainda assim a mais subaproveitada no setor da saúde.</p>
-                        <span class="blog-read-more">Ler artigo →</span>
-                    </a>
-                    <a class="blog-card" href="artigos-de-blog/site-lento-como-melhorar">
+                        <h3 data-edit-id="home-blog-2-h3">SEO local para captar clientes perto de ti</h3>
+                        <p data-edit-id="home-blog-2-p">Passos objetivos para dominar pesquisas locais e gerar contactos com maior intenção de compra.</p>
+                    </article>
+                    <article class="blog-card">
                         <div class="blog-thumb">
-                            <img data-edit-id="home-blog-img-003" src="assets/ferramentas/wordpress-speed-booster-thumbnail.jpg" alt="Dashboard de performance com métricas de velocidade de carregamento" loading="lazy">
+                            <img data-edit-id="home-blog-img-003" src="assets/ferramentas/wordpress-speed-booster-thumbnail.jpg" alt="Dashboard de performance para otimização de conversão" loading="lazy">
                         </div>
-                        <span class="blog-tag blog-tag--seo" style="margin-bottom:12px;display:inline-block;">SEO</span>
-                        <h3 data-edit-id="home-blog-3-h3">O Seu Site Está Lento? Isto É o Que Acontece (e Como Resolver)</h3>
-                        <p data-edit-id="home-blog-3-p">Cada segundo extra de carregamento custa conversões. Saiba como diagnosticar e corrigir os problemas de velocidade mais comuns.</p>
-                        <span class="blog-read-more">Ler artigo →</span>
-                    </a>
+                        <h3 data-edit-id="home-blog-3-h3">Landing pages que vendem mais</h3>
+                        <p data-edit-id="home-blog-3-p">Elementos críticos de copy, prova e UX para aumentar conversão sem aumentar investimento.</p>
+                    </article>
                 </div>
             </div>
         </section>
@@ -518,46 +548,15 @@
             </div>
         </section>
 
-        <section id="contact-form" class="section section-contact-form">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-label" data-edit-id="home-contact-label">Contacte-nos</span>
-                    <h2 data-edit-id="home-contact-h2">Fale connosco</h2>
-                    <p data-edit-id="home-contact-p">Partilhe os seus objetivos e receba um plano claro de crescimento nas próximas 24 horas.</p>
-                </div>
-
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mojyylgl" method="POST">
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Assunto</label>
-                            <input type="text" id="subject" name="subject">
-                        </div>
-                        <div class="form-group form-group--full">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                    </form>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer id="final-cta" class="footer-cta">
         <div class="container footer-cta-inner">
             <div>
                 <span class="section-label" data-edit-id="home-footer-label">Hora de agir</span>
-                <h2 data-edit-id="home-footer-h2">Se quer previsibilidade comercial, este é o próximo passo. Solicite a auditoria gratuita e veja onde pode crescer já.</h2>
+                <h2 data-edit-id="home-footer-h2">Solicite a auditoria gratuita e veja onde pode crescer.</h2>
             </div>
-            <a href="pt/quiz/index" class="btn btn-primary" data-edit-id="home-footer-cta">Agendar Reunião</a>
+            <a href="pt/quiz/index" class="btn btn-primary" data-edit-id="home-footer-cta">Contacte-nos</a>
         </div>
     </footer>
 
@@ -565,31 +564,31 @@
         <div class="container site-footer-inner">
             <div class="footer-brand">
                 <div class="footer-logo">Sica Creative</div>
-                <p data-edit-id="global-footer-tagline">Uma agência digital com presença clara, comunicação moderna e execução orientada a resultados.</p>
+                <p>Uma agência digital com presença clara, comunicação moderna e execução orientada a resultados.</p>
             </div>
 
             <div class="footer-links-grid">
                 <div>
                     <h3>Serviços</h3>
                     <ul>
-                        <li><a href="index#services" data-edit-id="global-nav-link-googleads">Google Ads</a></li>
-                        <li><a href="index#services" data-edit-id="global-nav-link-seo">SEO</a></li>
+                        <li><a href="#services">Google Ads</a></li>
+                        <li><a href="#services">SEO</a></li>
                         <li><a href="#services">CRO</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3>Empresa</h3>
                     <ul>
-                        <li><a href="clientes" data-edit-id="global-nav-resultados">Clientes</a></li>
-                        <li><a href="ferramentas" data-edit-id="global-nav-link-ferramentas">Ferramentas</a></li>
-                        <li><a href="index#contact-form" data-edit-id="global-nav-contacto">Contacte-nos</a></li>
+                        <li><a href="clientes">Clientes</a></li>
+                        <li><a href="ferramentas">Ferramentas</a></li>
+                        <li><a href="#final-cta">Contacte-nos</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3>Contato</h3>
                     <ul>
-                        <li><a data-edit-id="global-footer-email" href="mailto:info@sicacreative.com">info@sicacreative.com</a></li>
-                        <li><a data-edit-id="global-footer-phone" href="tel:+351912345678">+351 912 345 678</a></li>
+                        <li><a href="mailto:info@sicacreative.com">info@sicacreative.com</a></li>
+                        <li><a href="tel:+351912345678">+351 912 345 678</a></li>
                         <li><a href="#final-cta">Agendar auditoria</a></li>
                     </ul>
                 </div>
@@ -597,7 +596,7 @@
         </div>
 
         <div class="container footer-bottom">
-            <p data-edit-id="global-footer-copyright">© 2026 Sica Creative. Todos os direitos reservados.</p>
+            <p>© 2026 Sica Creative. Todos os direitos reservados.</p>
             <div class="footer-policy-links">
                 <a href="politica-privacidade">Política de Privacidade</a>
                 <a href="termos-condicoes">Termos de Uso</a>
@@ -610,31 +609,19 @@
 
     <script src="script.js"></script>
     <script>
-        // Scroll-aware navbar CTA — index.html only
+        // Scroll-aware navbar CTA — index1.html only
         (function () {
             var navbar = document.getElementById('mainNavbar');
-            var hero   = document.querySelector('.hero-section');
-            if (!navbar || !hero) return;
+            if (!navbar) return;
 
             function update() {
-                navbar.classList.toggle('header--scrolled', hero.getBoundingClientRect().bottom <= 0);
+                navbar.classList.toggle('header--scrolled', window.scrollY > 50);
             }
 
             update();
             window.addEventListener('scroll', update, { passive: true });
-            window.addEventListener('resize', update);
         })();
     </script>
     <script src="/popup-newsletter.js"></script>
-    <script type="text/javascript">
-        window.omnisend = window.omnisend || [];
-        omnisend.push(["brandID", "6981e17d27460b4ce15c57f3"]);
-        omnisend.push(["track", "$pageViewed"]);
-        !function(){var e=document.createElement("script");
-        e.type="text/javascript",e.async=!0,
-        e.src="https://omnisnippet1.com/inshop/launcher-v2.js";
-        var t=document.getElementsByTagName("script")[0];
-        t.parentNode.insertBefore(e,t)}();
-    </script>
 </body>
 </html>

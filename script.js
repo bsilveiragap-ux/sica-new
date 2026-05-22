@@ -302,29 +302,104 @@ if (processSection && processSystem && processItems.length > 0) {
 // ============================================================
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const name = contactForm.querySelector('[name="name"]');
         const email = contactForm.querySelector('[name="email"]');
         const subject = contactForm.querySelector('[name="subject"]');
         const message = contactForm.querySelector('[name="message"]');
+        const submitBtn = contactForm.querySelector('[type="submit"]');
 
-        // Basic validation
         if (!name.value || !email.value || !message.value) {
             alert('Por favor, preencha todos os campos obrigatórios.');
             return;
         }
 
-        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email.value)) {
             alert('Por favor, insira um email válido.');
             return;
         }
 
-        // Success feedback (you can integrate with actual backend here)
-        alert(`Obrigado ${name.value}! Sua mensagem foi recebida.`);
-        contactForm.reset();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'A enviar...';
+
+        try {
+            const res = await fetch('https://formspree.io/f/mojyylgl', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(contactForm)
+            });
+
+            if (res.ok) {
+                submitBtn.textContent = 'Mensagem enviada!';
+                contactForm.reset();
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Mensagem';
+                alert('Erro ao enviar. Tente novamente ou contacte-nos directamente.');
+            }
+        } catch {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar Mensagem';
+            alert('Erro de ligação. Verifique a sua internet e tente novamente.');
+        }
     });
 }
+
+// ============================================================
+// CALENDAR MODAL
+// ============================================================
+(function () {
+    var modalEl = document.createElement('div');
+    modalEl.id = 'cal-modal';
+    modalEl.innerHTML =
+        '<div id="cal-backdrop">' +
+            '<div id="cal-box">' +
+                '<button id="cal-close" aria-label="Fechar">&times;</button>' +
+                '<iframe src="https://calendar.app.google/LcG9SHbLgkQKNKnu8" frameborder="0" allowfullscreen></iframe>' +
+            '</div>' +
+        '</div>';
+    document.body.appendChild(modalEl);
+
+    function openCal() {
+        modalEl.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeCal() {
+        modalEl.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+
+    window.openCalendarModal = openCal;
+
+    document.getElementById('cal-close').addEventListener('click', closeCal);
+    document.getElementById('cal-backdrop').addEventListener('click', function (e) {
+        if (e.target === this) closeCal();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeCal();
+    });
+
+    // Intercept primary CTA buttons on non-clinic pages
+    var path = window.location.pathname;
+    var isClinicPage = path.indexOf('marketing-digital-clinicas') !== -1 ||
+                       path.indexOf('digital-marketing-dental') !== -1;
+
+    if (!isClinicPage) {
+        document.querySelectorAll('.btn-primary').forEach(function (btn) {
+            var href = btn.getAttribute('href') || '';
+            if (href.indexOf('quiz/') !== -1 ||
+                href.indexOf('mailto:') !== -1 ||
+                href.indexOf('#final-cta') !== -1 ||
+                href.indexOf('final-cta') !== -1) {
+                btn.setAttribute('href', '#');
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openCal();
+                });
+            }
+        });
+    }
+}());

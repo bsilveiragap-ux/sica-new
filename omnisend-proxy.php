@@ -26,11 +26,18 @@ if (empty($input['email'])) {
     exit;
 }
 
+$tags = ['quiz-nao-qualificado', 'clinica-dentaria'];
+if (($input['source'] ?? '') === 'popup') {
+    $tags[] = 'website-popup';
+}
+
+$contactStatus = ($input['source'] ?? '') === 'popup' ? 'subscribed' : 'nonSubscribed';
+
 $payload = [
     'email'      => $input['email'],
-    'status'     => 'nonSubscribed',
+    'status'     => $contactStatus,
     'statusDate' => date('c'),
-    'tags'       => ['quiz-nao-qualificado', 'clinica-dentaria'],
+    'tags'       => $tags,
     'customProperties' => [
         'quiz_step1' => $input['step1'] ?? '',
         'quiz_step4' => $input['step4'] ?? '',
@@ -39,6 +46,10 @@ $payload = [
     ],
     'sendWelcomeEmail' => false
 ];
+
+if (!empty($input['name'])) {
+    $payload['firstName'] = $input['name'];
+}
 
 $ch = curl_init('https://api.omnisend.com/v3/contacts');
 curl_setopt_array($ch, [

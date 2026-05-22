@@ -115,6 +115,22 @@ if (!is_dir($backupDir)) {
     @mkdir($backupDir, 0755, true);
 }
 
+// Pages treated as global components — changes propagate to all PT HTML pages
+$globalPreviewPages = array('_header-preview.html', '_footer-preview.html');
+
+// HTML files that hold the real PT content (root level only, no quiz/en standalone pages)
+$globalTargetPages = array(
+    'index.html',
+    'resultados.html',
+    'ferramentas.html',
+    'blog.html',
+    'sobre.html',
+    'artigo.html',
+    'artigo-site-lento.html',
+    'marketing-digital-clinicas-dentarias.html',
+    'marketing-digital-clinicas-dentarias-v2.html',
+);
+
 $groupedChanges = array();
 $skipped = array();
 foreach ($changes as $change) {
@@ -130,6 +146,18 @@ foreach ($changes as $change) {
         );
         continue;
     }
+    // Global preview: fan out to all target pages
+    if (in_array(basename($page), $globalPreviewPages)) {
+        foreach ($globalTargetPages as $targetPage) {
+            if (!isset($groupedChanges[$targetPage])) {
+                $groupedChanges[$targetPage] = array();
+            }
+            $fanChange = $change;
+            $fanChange['page'] = $targetPage;
+            $groupedChanges[$targetPage][] = $fanChange;
+        }
+        continue;
+    }
     if (!isset($groupedChanges[$page])) {
         $groupedChanges[$page] = array();
     }
@@ -142,6 +170,9 @@ $total = 0;
 
 foreach ($groupedChanges as $page => $pageChanges) {
     $normalizedPage = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $page);
+    if (pathinfo($normalizedPage, PATHINFO_EXTENSION) === '') {
+        $normalizedPage .= '.html';
+    }
     $filePath = $basePath . DIRECTORY_SEPARATOR . $normalizedPage;
     $realPath = realpath($filePath);
     $realBase = realpath($basePath);
